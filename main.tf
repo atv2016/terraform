@@ -115,7 +115,7 @@ resource "aws_lb" "example" {
 resource "aws_lb_listener" "http" {
   load_balancer_arn=aws_lb.example.arn
   port=80
-  protocol=http
+  protocol="http"
 
   #By default, return a simple 404 page
   default_action {
@@ -151,9 +151,9 @@ resource "aws_lb_listener_rule" "asg" {
   priority=100
 
   condition {
-    field="path-pattern"
-    values=["*"]
-      }
+    field = "path-pattern"
+    value = "[*]"
+          }
 
 action { 
   type="forward"
